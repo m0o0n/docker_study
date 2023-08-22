@@ -1,9 +1,15 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import logo from './logo.svg';
 import { Counter } from './features/counter/Counter';
 import './App.css';
+import { useAppDispatch } from './app/hooks';
+import { fetchAllUsersThunk } from './features/users/usersActions';
 
 function App() {
+  const dispatch = useAppDispatch()
+  useEffect(()=>{
+    dispatch(fetchAllUsersThunk())
+  })
   return (
     <div className="App">
       <header className="App-header">
